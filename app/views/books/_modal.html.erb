@@ -1,0 +1,18 @@
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title center"><%= @book.name %></h3>
+        <h5 class="modal-title">Author:  <%= @book.author.name %></h5>
+        <h5 class="modal-title">Category:  <%= @book.category.name %></h5>
+        <h5 class="modal-title">Publisher:  <%= @book.publisher.name %></h5>
+        <h5 class="modal-title">Pages:  <%= @book.num_of_pages %></h5>
+        <div class="thumbnail">
+          <figure><a href= "#"><img src="<%= @book.image.url%>" alt=""></a></figure>
+        </div>
+        <p class="modal-title"> <%= @book.description %></p>
+      </div>
+      <div class="modal-body modal-body-deny-form-request">
+      </div>
+    </div>
+  </div>

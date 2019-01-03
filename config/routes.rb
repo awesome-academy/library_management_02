@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
-  root "static_pages#home"
+  default_url_options host: "localhost:3000"
+  root "books#index"
   get "users/show"
   get "users/new"
   get "/help", to: "static_pages#help"

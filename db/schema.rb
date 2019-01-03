@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_01_03_083212) do
     t.string "name"
     t.text "description"
     t.integer "num_of_pages"
-    t.string "image"
+    t.text "image"
     t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

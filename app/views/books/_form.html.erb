@@ -8,13 +8,13 @@
   <%= f.text_field :description, class: "form-control" %>
 
   <%= f.label :number_of_pages %>
-  <%= f.text_field :num_of_pages, class: "form-control" %>
+  <%= f.number_field :num_of_pages, class: "form-control" %>
 
-  <%= f.label :images %>
-  <%= f.file_field :images, accept: "image/png,image/jpeg", class: "form-control" %>
+  <%= f.label :image %>
+  <%= f.file_field :image, accept: "image/png,image/jpeg", class: "form-control" %>
 
   <%= f.label :amount %>
-  <%= f.text_field :amount, class: "form-control" %>
+  <%= f.number_field :amount, class: "form-control" %>
 
   <%= f.label :authors %>
   <%= f.collection_select :author_id, get_authors(:name), :id, :name, include_blank: false %>

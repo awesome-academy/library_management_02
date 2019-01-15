@@ -8,7 +8,7 @@ class PublishersController < ApplicationController
   def create
     @publisher = Publisher.new publishers_params
     if @publisher.save
-      flash[:success] = t ".sign_up_success"
+      flash[:success] = t ".success_message"
       redirect_to @publisher
     else
       render :new

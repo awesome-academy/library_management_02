@@ -19,8 +19,11 @@ Category:
 book:
   name_maximum: 150
   pages_maximum: 5000
-  images_maximum: 1000
   amount_maximum: 50000
+  number:
+    min_length: 1
+  length_seemore: 20
+  maximun_image: 5
 author:
   name_maximum: 50
 paginate:

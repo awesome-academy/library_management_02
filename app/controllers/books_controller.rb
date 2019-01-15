@@ -10,14 +10,19 @@ class BooksController < ApplicationController
   def create
     @book = Book.new books_params
     if @book.save
-      flash[:success] = t ".sign_up_success"
+      flash[:success] = t ".success_message"
       redirect_to @book
     else
       render :new
     end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def edit; end
 
@@ -37,13 +42,14 @@ class BooksController < ApplicationController
 
   private
   def books_params
-    params.require(:book).permit :name, :description
+    params.require(:book).permit :name, :description, :num_of_pages, :image,
+      :amount, :author_id, :category_id, :publisher_id
   end
 
   def load_book
-    @book = book.find_by id: params[:id]
+    @book = Book.find_by id: params[:id]
     return if @book
-    flash[:danger] = I18n.t "books.load_book.error_message"
+    flash[:danger] = t "books.load_book.error_message"
     redirect_to root_path
   end
 end

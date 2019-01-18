@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-  before_action :load_author, only: %i(show edit update)
+  before_action :load_author, only: %i(show edit update destroy)
 
   def new
     @author = Author.new
@@ -18,6 +18,15 @@ class AuthorsController < ApplicationController
   def show; end
 
   def edit; end
+
+  def destroy
+    if @author.destroy
+      flash[:success] = t ".success"
+    else
+      flash[:danger] = t ".failed"
+    end
+    redirect_to authors_path
+  end
 
   def index
     @authors = Author.alphabet.search_author(params[:search])

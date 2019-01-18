@@ -1,5 +1,11 @@
 <% provide :title, t(".title") %>
-<h1><%= t(".title") %></h1>
+<h1><%= t(".title") %></h1><hr>
+<% if current_user.admin? %>
+  <%= link_to new_publisher_path, class: "btn btn-danger" do %>
+    <span class="glyphicon glyphicon-plus">&nbsp;<%= t(".add") %></span>
+  <% end %>
+<% end %>
+<hr>
 <div class="input-group search_inline">
   <%= form_tag(publishers_path, method: :get) do %>
     <%= text_field_tag :search, params[:search],
@@ -9,6 +15,20 @@
   <% end %>
 </div>
 <%= will_paginate %>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="active" width="30%"><%= t ".name" %></th>
+          <% if current_user.admin? %>
+            <th class="text-right active"><%= t ".action" %></th>
+          <% end %>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
 <ul class="publisher">
   <%= render @publishers %>
 </ul>

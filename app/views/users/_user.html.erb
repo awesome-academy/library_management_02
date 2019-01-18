@@ -1,8 +1,20 @@
-<li>
-  <%= gravatar_for user, size: Settings.user.gravatar_user %>
-  <%= link_to user.full_name, user %>
-  <% if current_user.role == 1 && !current_user?(user) %>
-    | <%= link_to t(".delete"), user, method: :delete,
-      data: {confirm: t(".confirm")} %>
-  <% end %>
-</li>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-hover">
+        <tr>
+          <td class="text-justify" width="25%"><%=user.full_name%></td>
+         <td class="text-justify" width="15%">
+            <%=user.gender%>
+          </td>
+          <td class="text-justify" width="24%"><%=user.address%></td>
+          <td class="text-justify" width="24%"><%=user.phone_number%></td>
+          <% if current_user.admin? %>
+            <td class="text-right">
+              <%= link_to t(".delete"), user, method: :delete,
+                data: {confirm: t(".confirm")} %>
+            </td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>

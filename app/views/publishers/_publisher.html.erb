@@ -1,4 +1,18 @@
-<li>
-  <%= link_to publisher.name, publisher %>
-    | <%= link_to t(".edit"), edit_publisher_path(publisher) %>
-</li>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover">
+      <tr>
+        <td width="30%">
+          <%= link_to publisher.name, publisher %>
+        </td>
+        <% if current_user.admin? %>
+        <td class="text-right">
+          <%= link_to t(".delete"), publisher,
+            method: :delete, data: {confirm: t(".confirm")} %>
+            | <%= link_to t(".edit"), edit_publisher_path(publisher) %>
+        </td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
+</div>

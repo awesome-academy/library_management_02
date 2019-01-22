@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :load_category, only: %i(show edit update)
+  before_action :load_category, only: %i(show edit update destroy)
 
   def new
     @category = Category.new
@@ -18,6 +18,15 @@ class CategoriesController < ApplicationController
   def show; end
 
   def edit; end
+
+  def destroy
+    if @category.destroy
+      flash[:success] = t ".success"
+    else
+      flash[:danger] = t ".failed"
+    end
+    redirect_to authors_path
+  end
 
   def index
     @categories = Category.alphabet.search_categories(params[:search])

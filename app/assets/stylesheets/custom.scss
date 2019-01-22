@@ -38,6 +38,7 @@ textarea {
 label{
   text-align: left;
 }
+
 /* typography */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -245,7 +246,29 @@ aside {
 
 div.inline { float:left; }
 
-div.rectangle{height: 400px;}
+.search_input {
+  width: 60% !important;
+}
+
+.btn_search {
+  width: 40% !important;
+}
+
+.btn_auto {
+  width: auto !important;
+}
+.btn-group input{
+  width: auto !important;
+}
+
+.inline {
+  width: 48% !important;
+  text-align: center !important;
+}
+
+.name_width {
+  width: "50%";
+}
 
 .image-custom{
   width: 252px;

@@ -1,13 +1,28 @@
 <article class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
-  <div class="thumb-pad2 maxheight1 rectangle"><div class="box_inner">
+  <div class="thumb-pad2 maxheight1" style="height: 450px;"><div class="box_inner">
     <div class="thumbnail">
       <figure><%= image_tag(book.image.url, alt: t(".image"),class: "image-custom") %></figure>
       <div class="caption">
         <a href="#"><%= book.name %></a>
         <p class="title"><%=truncate(book.description, length: Settings.book.length_seemore)%><%= link_to t(".see_more"), book_path(book), {remote: true } %>
         </p>
-        <p class="num_of_book"><%= t(".pages", num: book.num_of_pages) %></p>
-        <p class="authors"><%= t(".author", num: book.author.name) %></p>
+        <p class="num_of_book">pages:<%= book.num_of_pages %></p>
+        <p class="authors">Author:<%= book.author.name %></p>
+      </div>
+      <div class="panel-footer text-center">
+        <%= form_for borrow_detail, remote: true do |f| %>
+          <%= f.hidden_field :number, value: 1 %>
+          <%= f.hidden_field :book_id, value: book.id %>
+          <% if book.amount.zero? %>
+            <%= f.submit t(".empty_book"), class: "btn btn-primary", disabled: true %>
+          <% elsif !logged_in? %>
+            <%= link_to t(".login_require"), login_path, class: "btn btn-primary" %>
+          <% elsif current_user.admin? %>
+            <%= f.submit t(".admin_require"), class: "btn btn-primary", disabled: true %>
+          <% else %>
+            <%= f.submit t(".borrow"), class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div></div>

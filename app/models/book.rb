@@ -16,7 +16,6 @@ class Book < ApplicationRecord
   validates :image, presence: true
   validates :amount, format: { with: VALID_NUMBER_REGEX},
     length: {minimum: Settings.book.number.min_length}
-  validate  :picture_size
 
   scope :alphabet, ->{order name: :ASC}
   scope :_page,->(page){paginate page: page, per_page: Settings.paginate.per_page}
@@ -25,12 +24,4 @@ class Book < ApplicationRecord
   }
 
   mount_uploader :image, PictureUploader
-
-  private
-
-  def picture_size
-    if image.size > Settings.book.error_image_maximun.megabytes
-      errors.add(:image, t(".error_image_maximun"))
-    end
-  end
 end

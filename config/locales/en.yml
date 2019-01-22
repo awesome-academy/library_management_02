@@ -1,15 +1,23 @@
 en:
   layouts:
+    application:
+      login: "Please Login"
+      permission: "You dont have permission to access"
     header:
       name: "Vim Story Library"
       home: "Home"
       help: "Help"
       users: "Users"
-      account: "Account"
+      account: "Hi %{name} !"
       profile: "Profile"
       settings: "Settings"
       logout: "Log out"
       login: "Log in"
+      book: "Books"
+      author: "Authors"
+      publisher: "Publishers"
+      category: "Categories"
+      manage_borrow: "Manage borrows"
     footer:
       about: "About"
       contact: "Contact"
@@ -42,7 +50,6 @@ en:
       title: "Edit user"
       update: "Update your profile"
       save: "Save changes"
-      gravatar_link: "http://gravatar.com/emails"
       change: "change"
       please_login: "Please log in."
     update:
@@ -51,6 +58,7 @@ en:
       title: "All users"
       search: "search ........."
       button_search: "Search"
+      add: "Add New User"
     user:
       delete: "delete"
       confirm: "You sure?"
@@ -97,8 +105,14 @@ en:
       title: "All authors"
       search: "Search ........."
       button_search: "Search"
+      add: "Add New Author"
     load_author:
       error_message: "No Authors"
+    destroy:
+      success: "The borrow was deleted successfully"
+      failed: "Failed!! The borrow couldn't be deleted"
+      error: "The borrow couldn't be found"
+      permission: "You dont have permission to access"
     update:
       update_success: "Author was updated successfully"
       error: "This author could not be found"
@@ -107,6 +121,7 @@ en:
       profile_updated: "Profile Updated"
       error: "This author could not be found"
       edit: "Edit"
+      permission: "You dont have permission to access"
   #Publisher
   publishers:
     new:
@@ -118,6 +133,12 @@ en:
       title: "All Publishers"
       search: "Search ........."
       button_search: "Search"
+      add: "Add New Publisher"
+    destroy:
+      success: "The borrow was deleted successfully"
+      failed: "Failed!! The borrow couldn't be deleted"
+      error: "The borrow couldn't be found"
+      permission: "You dont have permission to access"
     load_Publishers:
       error_message: "No publishers"
     update:
@@ -128,6 +149,7 @@ en:
       profile_updated: "Profile Updated"
       error: "This publisher could not be found"
       edit: "Edit"
+      permission: "You dont have permission to access"
   #Books
   books:
     new:
@@ -139,21 +161,32 @@ en:
       title: "All books"
       search: "Search ........."
       button_search: "Search"
+      add: "Add New Book"
     load_books:
       error_message: "No books"
     update:
       update_success: "book was updated successfully"
       error: "This book could not be found"
+    destroy:
+      success: "The borrow was deleted successfully"
+      failed: "Failed!! The borrow couldn't be deleted"
+      error: "The borrow couldn't be found"
+      permission: "You dont have permission to access"
     edit:
       title: "books"
       profile_updated: "Profile Updated"
       error: "This book could not be found"
       edit: "Edit"
+      permission: "You dont have permission to access"
     book_row:
       author: "Author: %{num}"
-      see_more: "See_more: "
+      see_more: "See_more"
       pages: "Pages: %{num}"
       image: "Image"
+      login_require: "Login to borrow Books"
+      borrow: "Borrow this Book"
+      empty_book: "Out of Books"
+      admin_require: "Admin can't Borrow Books"
     modal:
       author: "Author: "
       pages: "Pages: "
@@ -161,6 +194,7 @@ en:
       publisher: "Publisher: "
     book:
       error_image_maximun: "should be less than 5MB"
+
   #Categories
   categories:
     new:
@@ -172,6 +206,12 @@ en:
       title: "All Categories"
       search: "Search ........."
       button_search: "Search"
+      add: "Add New Category"
+    destroy:
+      success: "The borrow was deleted successfully"
+      failed: "Failed!! The borrow couldn't be deleted"
+      error: "The borrow couldn't be found"
+      permission: "You dont have permission to access"
     load_category:
       error_message: "No Categories"
     update:
@@ -182,3 +222,159 @@ en:
       profile_updated: "Profile Updated"
       error: "This Category could not be found"
       edit: "Edit"
+      permission: "You dont have permission to access"
+  #Borrow
+  borrows:
+    create:
+      success_message: "You was added Book successfully"
+    index:
+      title: "All Borrows"
+      search: "Search ........."
+      button_search: "Search"
+      no_borrow: "You don't have any Borrow!"
+      borrow_id: "No."
+      name: "Name of customer"
+      from: "From day"
+      to: "To day"
+      total_book: "Total of books"
+      status: "Status of Borrow"
+      day: "Day of borrow"
+      action: "Action"
+      note: "Note"
+    destroy:
+      success: "The borrow was deleted successfully"
+      failed: "Failed!! The borrow couldn't be deleted"
+      error: "The borrow couldn't be found"
+      permission: "You dont have permission to access"
+    load_borrow:
+      error_message: "No Borrows"
+    update:
+      update_success: "Borrows was updated successfully"
+      error: "This Borrow could not be found"
+    edit:
+      title: "Borrow"
+      borrow_updated: "Borrows Updated"
+      error: "This Borrow could not be found"
+      edit: "Edit"
+      button_confirm: "Submit"
+    borrow_user:
+      confirm: "You sure?"
+  #Borrow_Details
+  borrow_details:
+    create:
+      borrow_existed: "This book existed in your cart! Please update its quantity in your cart."
+      must_login: "You must login to use this feature"
+      borrow_existed: "This book existed in your cart! Please update its quantity in your cart."
+    update:
+      success: "The quantity of the book was updated successfully"
+      failed: "Failed! The quantity of the book can't be updated"
+      error: "This borrow detail couldn't be found"
+      blank: "Your cart is empty. Please add some book to your cart."
+      must_login: "You must login to use this feature"
+      run_out: "The book isn't enough to borrow. Please enter again!"
+      no_detail: "There is no borrow detail!! Add more items to your cart."
+    destroy:
+      success: "The book was deleted successfully"
+      failed: "Failed! This book couldn't be deleted"
+      error: "This book couldn't be find"
+      must_login: "You must login to use this feature"
+      permission: "You dont have permission to access"
+  #Cart
+  carts:
+    cart_row:
+      update: "Update"
+      delete: "Delete"
+      confirm: "Are you sure you wish to delete the book \"%{name}\" from your cart?"
+      confirm_login: "You must log in to borrow Books"
+    shopping_cart:
+      title: "Your cart"
+      empty_1: "Your cart is empty. Please "
+      empty_2: " and add some items to your cart."
+      confirm_button: "Confirm borrow"
+      go_back: "Go Back"
+  #Admin
+  admin:
+      books:
+        index:
+          title: "All Books"
+          new: "Add New Book"
+          search: "Enter category name or book name"
+          button_search: "Search"
+        form:
+          choose_author: "Please select author of this book"
+          choose_category: "Please select category of this book"
+          choose_publisher: "Please select publisher of this book"
+        new:
+          title: "Create New Book"
+          create: "Create"
+        create:
+          success: "The book was created successfully"
+        update:
+          update: "The book was updated successfully"
+        destroy:
+          success: "The book've been deleted successfully"
+          failed: "Failed! This book can't be deleted"
+          permission: "You dont have permission to access"
+        edit:
+          title: "Update Book"
+          update: "Update"
+          permission: "You dont have permission to access"
+        book:
+          name: "Name of Book"
+          category: "Category"
+          author: "Name of Author"
+          publisher: "Name of Publisher"
+          action: "Action"
+          delete: "Delete"
+          edit: "Edit"
+          confirm: "You sure?"
+      borrows:
+        create:
+          success_message: "You was added Book successfully"
+        index:
+          title: "All Borrows"
+          search: "Search ........."
+          button_search: "Search"
+          no_borrow: "You don't have any Borrow!"
+          borrow_id: "No."
+          name: "Name of customer"
+          from: "From day"
+          to: "To day"
+          total_book: "Total of books"
+          status: "Status of Borrow"
+          day: "Day of borrow"
+          action: "Action"
+          note: "Note"
+        destroy:
+          success: "The borrow was deleted successfully"
+          failed: "Failed!! The borrow couldn't be deleted"
+          error: "The borrow couldn't be found"
+          permission: "You dont have permission to access"
+        load_borrow:
+          error_message: "No Borrows"
+        update:
+          update_success: "Borrows was updated successfully"
+          error: "This Borrow could not be found"
+        edit:
+          title: "Borrow"
+          borrow_updated: "Borrows Updated"
+          error: "This Borrow could not be found"
+          edit: "Edit"
+          button_confirm: "Submit"
+        borrow:
+          accept: "Accept"
+          deny: "Deny"
+          confirm_accept: "You sure to accept?"
+          confirm_deny: "You sure to deny?"
+          confirm: "You sure?"
+        accept_request:
+          success: "The request was accepted successfully"
+          failed: "The request couldn't be accepted"
+          error: "The request couldn't be found"
+          permission: "You dont have permission to access"
+          run_out: "Failed! The book isn't enough quantity to borrow!! Please deny this request."
+        deny_request:
+          success: "The request was denied successfully"
+          failed: "The request couldn't be denied"
+          error: "The request couldn't be found"
+          permission: "You dont have permission to access"

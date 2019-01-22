@@ -1,10 +1,19 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
+  include BorrowsHelper
 
-  def respond_modal_with(*args, &blk)
-    options = args.extract_options!
-    options[:responder] = ModalResponder
-    respond_with *args, options, &blk
+  private
+
+  def logged_in_user
+    return if logged_in?
+    flash[:danger] = t ".login"
+    redirect_to login_path
+  end
+
+  def is_admin?
+    return if current_user.admin?
+    redirect_to root_path
+    flash[:danger] = t ".permission"
   end
 end

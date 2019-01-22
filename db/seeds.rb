@@ -9,6 +9,18 @@ User.create!(email: "vinhtran09121997@gmail.com",
 
 10.times do |n|
   name  = Faker::Name.name
+  email = "vinhtran-#{n+1}@gmail.com"
+  User.create!(email: email,
+    full_name: name,
+    gender: false,
+    address: "441 au co",
+    phone_number: "0775898786",
+    password: "123456",
+    password_confirmation: "123456")
+end
+
+10.times do |n|
+  name  = Faker::Name.name
   Author.create!(
     name: name,
     description: "Tran Ngoc Vim ...............................")
@@ -21,23 +33,36 @@ end
     description: "Ngoen Ngoen ...............................")
 end
 
-Category.create!(
-  name: "romantic"
-)
+name= ["Sach Tieng Viet", "Van hoc", "Tieu thuyet", "Tinh cam/Lang man",
+  "Sach Tieng Anh", "Van hoc", "Kinh te", "Ngan Hang", "Marketing"]
+for i in 0..8 do
+  Category.create!(name: name[i])
+end
 
 50.times do |n|
   name  = Faker::Name.name
+  description = Faker::Lorem.sentence(100)
+  num_of_pages = n+10
+  amount = n+100
   Book.create!(
     name: name,
-    description: "Ngoen Ngoen ..............................................
-      ......................................................................
-      ......................................................................
-      .................................................................Ngoen",
-    num_of_pages: 10,
+    description: description,
+    num_of_pages: num_of_pages,
     image: Rails.root.join("public/uploads/tmp/vim.png").open,
-    amount: 10,
+    amount: amount,
     author_id: 1,
     publisher_id: 1,
     category_id: 1
   )
 end
+
+Book.create!(
+    name: "a",
+    description: "aaaaaa",
+    num_of_pages: 100,
+    image: Rails.root.join("public/uploads/tmp/vim.png").open,
+    amount: 1,
+    author_id: 1,
+    publisher_id: 1,
+    category_id: 1
+  )

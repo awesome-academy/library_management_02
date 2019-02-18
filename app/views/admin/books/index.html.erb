@@ -1,0 +1,35 @@
+<% provide :title, t(".title") %>
+<h1><%= t(".title") %></h1><hr>
+<%= link_to new_admin_book_path, class: "btn btn-danger" do %>
+  <span class="glyphicon glyphicon-plus">&nbsp;<%= t(".new") %></span>
+<% end %>
+<hr>
+<div class="input-group search_inline">
+  <%= form_tag(admin_books_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search],
+    placeholder: t(".search"), class: "form-control search_input" %>
+    <%= submit_tag t(".button_search"), name: nil,
+    class: "btn btn-primary btn_search" %><i class="fa fa-search fa-fw"></i>
+  <% end %>
+</div><hr>
+<%= will_paginate %>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-justify active" width="20%"><%= t ".name" %></th>
+          <th class="text-justify active" width="15%"><%= t ".category" %></th>
+          <th class="text-center active" width="20%"><%= t ".author" %></th>
+          <th class="text-center active" width="19%"><%= t ".publisher" %></th>
+          <th class="text-center active" width="12%"><%= t ".amount" %></th>
+          <% if current_user.admin? %>
+            <th class="text-right active"><%= t ".action" %></th>
+          <% end %>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+<%= render @books %>
+<%= will_paginate %>

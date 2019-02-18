@@ -66,3 +66,9 @@ Book.create!(
     publisher_id: 1,
     category_id: 1
   )
+5.times do |n|
+Comment.create!(
+  book_id: 1,
+  user_id: 1,
+  content: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+end

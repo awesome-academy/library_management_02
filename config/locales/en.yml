@@ -293,6 +293,15 @@ en:
       empty_2: " and add some items to your cart."
       confirm_button: "Confirm borrow"
       go_back: "Go Back"
+  likes:
+    create:
+      success: "You was liked successfully"
+      failed: "Failed!! can't Unlike"
+    load_author:
+      error_message: "No Like"
+    destroy:
+      success: "Unlike successfully"
+      failed: "Failed!! can't Unlike"
   #Admin
   admin:
       books:
@@ -380,3 +389,15 @@ en:
           failed: "The request couldn't be denied"
           error: "The request couldn't be found"
           permission: "You dont have permission to access"
+  comments:
+    create:
+      create_success: "Commment successfully"
+    load_book:
+      error_message: "Commment failed"
+    form:
+      post_comment: "Post comments"
+    comment:
+      comment_by: "by."
+      comment: "comment"
+      post: "Posted"
+      late: "lated"

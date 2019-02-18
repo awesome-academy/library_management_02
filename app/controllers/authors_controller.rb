@@ -9,13 +9,18 @@ class AuthorsController < ApplicationController
     @author = Author.new authors_params
     if @author.save
       flash[:success] = t ".success_message"
-      redirect_to @author
+      redirect_to authors_path
     else
       render :new
     end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def edit; end
 
@@ -36,7 +41,7 @@ class AuthorsController < ApplicationController
   def update
     if @author.update_attributes authors_params
       flash[:success] = t ".update_success"
-      redirect_to @author
+      redirect_to authors_path
     else
       render :edit
     end

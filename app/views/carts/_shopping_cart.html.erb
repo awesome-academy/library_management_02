@@ -1,0 +1,16 @@
+<hr>
+<% if @borrow_details.size == 0 %>
+  <p class="text-center">
+    <h1><%= t(".empty_1") %><%= link_to t(".go_back"), root_path %>
+      <%= t(".empty_2") %></h1>
+  </p>
+<% else %>
+  <h1><%= t(".title") %></h1><hr>
+  <% @borrow_details.each do |borrow_detail| %>
+    <%= render "carts/cart_row", book: borrow_detail.book,
+      borrow_detail: borrow_detail, show: true %>
+  <% end %>
+
+  <p><%= link_to t(".confirm"), edit_borrow_path(current_borrow), class: "btn btn-primary btn-right" %></p>
+
+<% end %>

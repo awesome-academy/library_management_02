@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
     @category = Category.new categories_params
     if @category.save
       flash[:success] = t ".success_message"
-      redirect_to @category
+      redirect_to categories_path
     else
       render :new
     end
@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
     else
       flash[:danger] = t ".failed"
     end
-    redirect_to authors_path
+    redirect_to categories_path
   end
 
   def index
@@ -36,7 +36,7 @@ class CategoriesController < ApplicationController
   def update
     if @category.update_attributes categories_params
       flash[:success] = t ".update_success"
-      redirect_to @category
+      redirect_to categories_path
     else
       render :edit
     end

@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   include BooksHelper
 
-  before_action :load_book, only: %i(show edit)
+  before_action :load_category, except: %i(new create index)
 
   def show
     respond_to do |format|

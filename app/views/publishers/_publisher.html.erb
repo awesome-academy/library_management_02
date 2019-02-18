@@ -5,10 +5,18 @@
         <td class="width30">
           <%= link_to publisher.name, publisher %>
         </td>
+<<<<<<< HEAD
         <% if logged_in? && current_user.admin? %>
           <td class="text-right">
             <%= link_to t(".delete"), publisher, method: :delete, data: {confirm: t(".confirm")} %>
             |<%= link_to t(".edit"), edit_publisher_path(publisher) %>
+=======
+        <% if current_user.admin? %>
+          <td class="text-right">
+            <%= link_to t(".delete"), publisher,
+              method: :delete, data: {confirm: t(".confirm")} %>
+            | <%= link_to t(".edit"), edit_publisher_path(publisher) %>
+>>>>>>> request
           </td>
         <% end %>
       </tr>

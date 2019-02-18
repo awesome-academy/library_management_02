@@ -9,7 +9,7 @@ class PublishersController < ApplicationController
     @publisher = Publisher.new publishers_params
     if @publisher.save
       flash[:success] = t ".success_message"
-      redirect_to @publisher
+      redirect_to publishers_path
     else
       render :new
     end
@@ -27,7 +27,7 @@ class PublishersController < ApplicationController
   def update
     if @publisher.update_attributes publishers_params
       flash[:success] = t ".update_success"
-      redirect_to @publisher
+      redirect_to publishers_path
     else
       render :edit
     end

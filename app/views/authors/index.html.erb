@@ -21,7 +21,7 @@
       <thead>
         <tr>
           <th class="text-justify active" width="30%"><%= t ".name" %></th>
-          <% if logged_in? &&  current_user.admin? %>
+          <% if logged_in? && current_user.admin? %>
             <th class="text-right active"><%= t ".action" %></th>
           <% end %>
         </tr>

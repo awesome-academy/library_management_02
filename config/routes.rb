@@ -27,4 +27,14 @@ Rails.application.routes.draw do
     end
     resources :borrow_details, only: [:create, :update, :destroy]
   end
+
+  resources :books do
+    resources :likes
+    resources :comments
+  end
+
+  resources :users do
+    resources :likes
+    # resources :comments
+  end
 end

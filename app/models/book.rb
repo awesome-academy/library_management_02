@@ -26,4 +26,8 @@ class Book < ApplicationRecord
   }
 
   mount_uploader :image, PictureUploader
+
+  def liked_by? user
+    likes.liked_by(user.id).present?
+  end
 end

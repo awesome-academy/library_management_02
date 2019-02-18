@@ -1,0 +1,19 @@
+<h1><%= t(".borrow_detail") %></h1>
+<table class="table">
+  <tr class="active">
+    <th><%= t(".id_borrow") %></th>
+    <th><%= t(".id") %></th>
+    <th><%= t(".name") %></th>
+    <th class="number_book_th"><%= t(".number_book") %></th>
+    <th class="number_book_th"><%= t(".number_borrow") %></th>
+  </tr>
+  <% @borrow_details.each do |borrow_detail| %>
+    <tr>
+      <td><%= @borrow.id %></td>
+      <td><%= borrow_detail.book.id %></td>
+      <td class="book_name"><%= borrow_detail.book.name %></td>
+      <td class="number_book"><%= borrow_detail.book.amount %></td>
+      <td class="number_book1"><%= borrow_detail.number %></td>
+    </tr>
+  <% end %>
+</table>

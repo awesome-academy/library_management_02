@@ -1,0 +1,14 @@
+<% provide :title, t(".title") %>
+<% provide :button_text, t(".button_confirm") %>
+<%= form_for @borrow, url: deny_request_admin_borrow_path, remote: true  do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.label :note %>
+  <%= f.text_area :note, class: "form-control" %>
+
+  <%= f.hidden_field :status, value: :deny %>
+  <%= f.hidden_field :id, value: current_borrow.id %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
+

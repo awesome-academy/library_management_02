@@ -5,6 +5,8 @@ class Borrow < ApplicationRecord
 
   validates :date_borrow, presence: true
   validates :end_date_borrow, presence: true
+  #validates :total_book, presence: true,
+  #  numericality: {only_integer: true, greater_than: 0}
 
   enum status: {pending: 0, accept: 1, deny: 2}
 

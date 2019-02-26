@@ -2,14 +2,13 @@
     <div class="col-md-12">
       <table class="table table-hover">
         <tr>
-          <td width="30%">
-            <%= link_to category.name, category %>
-          </td>
-          <% if logged_in? && current_user.admin? %>
-            <td class="text-right">
-              <%= link_to t(".delete"), category, method: :delete, data: {confirm: t(".confirm")} %>
+          <td width="30%"><%= category.name %></td>
+          <% if user_signed_in? && current_user.admin? %>
+          <td class="text-right">
+            <%= link_to t(".delete"), category,
+              method: :delete, data: {confirm: t(".confirm")} %>
               | <%= link_to t(".edit"), edit_category_path(category) %>
-            </td>
+          </td>
           <% end %>
         </tr>
       </table>

@@ -1,0 +1,17 @@
+<% @comments.each do |comment| %>
+      <div class="thumbnail">
+        <h4> <%= t(".comment_by") %> <%= comment.user.full_name %> </h4>
+        <h5 class=".comment"> <%= comment.content %></h5>
+        <h8><%= t(".post") %> <%= comment.book.created_at %></h8>
+      </div>
+<% end %>
+<div class="modal-content">
+  <div class="modal-header">
+    <%= form_for Comment.new, url: book_comments_path(book_id: params[:book_id].to_i),
+      remote: true, method: :POST do |f| %>
+      <%= f.text_area :content %>
+      <%= f.hidden_field :book_id, value: params[:book_id].to_i %>
+      <%= f.submit t(".comment"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -23,19 +23,6 @@ en:
       contact: "Contact"
       title_news: "News"
     basetitle: "Vim Story Library"
-  #handle login
-  sessions:
-    new:
-      login: "Log In"
-      password: "Password"
-      sign_up: "Sign up now!"
-      new_user: "New user?"
-      remember_me: "Remember me on this computer"
-    create:
-      success_message: "You've been logged in successfully"
-      error_messages: "Invalid email/password combination"
-    destroy:
-      logout_messages: "You've been logged out"
   #handle account
   users:
     new:
@@ -52,8 +39,10 @@ en:
       save: "Save changes"
       change: "change"
       please_login: "Please log in."
+      permission: "You dont have permission to access! "
     update:
       update_success: "Profile updated"
+      permission: "You dont have permission to access! "
     index:
       title: "All users"
       search: "search ........."
@@ -88,12 +77,14 @@ en:
       announce_about_html: "Contact the Vim Story Library about the Vim Story at the"
       contact_link: "http://www.railstutorial.org/contact"
       contact_link_detail: "contact page"
+
   #Shared
   shared:
     form: "The form contains %{error_list}"
     error:
       one: "1 error"
       other: "%{count} errors"
+
   #Authors
   authors:
     new:
@@ -106,6 +97,8 @@ en:
       search: "Search ........."
       button_search: "Search"
       add: "Add New Author"
+      description: "Description"
+      name: "Name"
     load_author:
       error_message: "No Authors"
     destroy:
@@ -122,6 +115,9 @@ en:
       error: "This author could not be found"
       edit: "Edit"
       permission: "You dont have permission to access"
+    author:
+      confirm: "You sure?"
+
   #Publisher
   publishers:
     new:
@@ -134,6 +130,8 @@ en:
       search: "Search ........."
       button_search: "Search"
       add: "Add New Publisher"
+      description: "Description"
+      name: "Name"
     destroy:
       success: "The borrow was deleted successfully"
       failed: "Failed!! The borrow couldn't be deleted"
@@ -150,6 +148,9 @@ en:
       error: "This publisher could not be found"
       edit: "Edit"
       permission: "You dont have permission to access"
+    publisher:
+      confirm: "You sure?"
+
   #Books
   books:
     new:
@@ -196,6 +197,7 @@ en:
       error_image_maximun: "should be less than 5MB"
     author:
       des_author: "Description about Author: "
+
   #Categories
   categories:
     new:
@@ -224,6 +226,8 @@ en:
       error: "This Category could not be found"
       edit: "Edit"
       permission: "You dont have permission to access"
+    category:
+      confirm: "You sure?"
   #Borrow
   borrows:
     create:
@@ -260,6 +264,7 @@ en:
       button_confirm: "Submit"
     borrow_user:
       confirm: "You sure?"
+
   #Borrow_Details
   borrow_details:
     create:
@@ -280,6 +285,7 @@ en:
       error: "This book couldn't be find"
       must_login: "You must login to use this feature"
       permission: "You dont have permission to access"
+
   #Cart
   carts:
     cart_row:
@@ -293,6 +299,8 @@ en:
       empty_2: " and add some items to your cart."
       confirm_button: "Confirm borrow"
       go_back: "Go Back"
+
+  #Like
   likes:
     create:
       success: "You was liked successfully"
@@ -320,15 +328,16 @@ en:
         create:
           success: "The book was created successfully"
         update:
-          update: "The book was updated successfully"
+          update_success: "The book was updated successfully"
         destroy:
           success: "The book've been deleted successfully"
           failed: "Failed! This book can't be deleted"
           permission: "You dont have permission to access"
         edit:
           title: "Update Book"
-          update: "Update"
+          update_success: "Update"
           permission: "You dont have permission to access"
+          update: "Edit"
         book:
           name: "Name of Book"
           category: "Category"
@@ -389,3 +398,17 @@ en:
           failed: "The request couldn't be denied"
           error: "The request couldn't be found"
           permission: "You dont have permission to access"
+
+  #comment
+  comments:
+    create:
+      create_success: "Commment successfully"
+    load_book:
+      error_message: "Commment failed"
+    form:
+      post_comment: "Post comments"
+    comment:
+      comment_by: "by."
+      comment: "comment"
+      post: "Posted"
+      late: "lated"

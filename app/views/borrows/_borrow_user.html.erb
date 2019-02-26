@@ -1,0 +1,18 @@
+<% current_user.borrows.newest.each do |list| %>
+  <tr>
+    <td><%= link_to list.id, borrow_path(list.id) %>
+
+    <td><%= current_user.full_name %></td>
+    <td><%= l(list.date_borrow, format: :short) %></td>
+    <td><%= l(list.end_date_borrow, format: :short) %></td>
+    <td><%= list.total_book %></td>
+    <td class="status"><%= list.status %></td>
+    <td><%= l(list.created_at, format: :short) %></td>
+    <td>
+      <% if list.pending? %>
+        <%= link_to t(".delete"), list, method: :delete, data: {confirm: t(".confirm")}, class: "btn btn-danger" %>
+      <% end %>
+    </td>
+    <td><%= list.note %></td>
+  </tr>
+<% end %>

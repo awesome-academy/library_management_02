@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_03_083212) do
+ActiveRecord::Schema.define(version: 2019_02_11_034454) do
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2019_01_03_083212) do
   create_table "borrows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "note"
-    t.datetime "date_borrow", default: "2019-01-22 07:39:05"
-    t.datetime "end_date_borrow", default: "2019-01-29 07:39:05"
+    t.datetime "date_borrow", default: "2019-02-23 02:23:00"
+    t.datetime "end_date_borrow", default: "2019-03-02 02:23:00"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -108,15 +108,20 @@ ActiveRecord::Schema.define(version: 2019_01_03_083212) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email"
     t.string "full_name"
     t.boolean "gender"
     t.string "address"
     t.integer "phone_number"
     t.integer "role", default: 0, null: false
-    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "books", "authors"

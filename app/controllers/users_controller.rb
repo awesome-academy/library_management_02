@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-  include SessionsHelper
   include UsersHelper
 
-  before_action :load_user, only: %i(show destroy)
-  before_action :logged_in_user, except: %i(new create show)
-  before_action :correct_user, only: %i(edit update)
-  before_action :is_admin, only: :destroy
+  before_action :load_user, except: %i(index new create)
+  before_action :authenticate_user!
+
+  authorize_resource
 
   def new
     @user = User.new
@@ -23,8 +22,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.alphabet.search_user(params[:search]).newest
-      .paginate page: params[:page],per_page: Settings.user.per_page
+    @search = User.ransack params[:q]
+    @users = @search.result.alphabet.paginate page: params[:page],per_page: Settings.user.per_page
     respond_to do |format|
       format.html
     end
@@ -66,23 +65,7 @@ class UsersController < ApplicationController
     :gender, :password, :password_confirmation
   end
 
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = t ".please_login"
-      redirect_to login_path
-    end
-  end
-
-  def correct_user
-    redirect_to(root_path) unless current_user?(@user)
-  end
-
-  def is_admin
+  def is_admin?
     redirect_to(root_path) unless current_user.admin?
-  end
-
-  def store_location
-    session[:forwarding_url] = request.original_url if request.get?
   end
 end

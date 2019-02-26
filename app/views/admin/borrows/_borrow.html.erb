@@ -1,0 +1,16 @@
+<tr>
+  <td><%= link_to borrow.id, borrow_path(borrow.id) %></td>
+  <td><%= borrow.user.full_name %></td>
+  <td><%= l(borrow.date_borrow, format: :short) %></td>
+  <td><%= l(borrow.end_date_borrow, format: :short) %></td>
+  <td><%= borrow.total_book %></td>
+  <td id=<%= "status-borrow-#{borrow.id}" %> class="status"><%= borrow.status %></td>
+  <td><%= l(borrow.created_at, format: :short) %></td>
+  <td id=<%= "action-borrow-#{borrow.id}" %> >
+      <% if borrow.pending? %>
+        <%= link_to t(".accept"), accept_request_admin_borrow_path(id: borrow.id), method: :get, data: {confirm: t(".confirm_accept")}, class: "btn btn-success inline" %>
+        <%= link_to t(".deny"), edit_admin_borrow_path(id: borrow.id), data: {confirm: t(".confirm_deny")}, class: "btn btn-danger inline"%>
+      <% end %>
+  </td>
+  <td id=<%= "note-borrow-#{borrow.id}" %>><%= borrow.note %></td>
+</tr>

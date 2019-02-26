@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
-  before_action :load_category, except: %i(new create index)
+  before_action :load_category, only: %i(show edit update destroy)
+
+  authorize_resource
 
   def new
     @category = Category.new
@@ -9,7 +11,7 @@ class CategoriesController < ApplicationController
     @category = Category.new categories_params
     if @category.save
       flash[:success] = t ".success_message"
-      redirect_to @category
+      redirect_to categories_path
     else
       render :new
     end
@@ -25,18 +27,18 @@ class CategoriesController < ApplicationController
     else
       flash[:danger] = t ".failed"
     end
-    redirect_to authors_path
+    redirect_to categories_path
   end
 
   def index
-    @categories = Category.alphabet.search_categories(params[:search])
-      .paginate page: params[:page],per_page: Settings.paginate.per_page
+    @search = Category.ransack (params[:q])
+    @categories = @search.result.alphabet.paginate page: params[:page],per_page: Settings.paginate.per_page
   end
 
   def update
     if @category.update_attributes categories_params
       flash[:success] = t ".update_success"
-      redirect_to @category
+      redirect_to categories_path
     else
       render :edit
     end

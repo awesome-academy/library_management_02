@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out if logged_in?
+    log_out if user_signed_in?
     flash[:success] = t ".logout_messages"
     redirect_to root_path
   end

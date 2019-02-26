@@ -15,9 +15,11 @@ class User < ApplicationRecord
     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: Settings.user.pass_minimum }
 
-  has_secure_password
-
   enum role: {user: 0, admin: 1}
+
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :rememberable, :validatable
 
   scope :newest, ->{order created_at: :DESC}
   scope :alphabet, ->{order full_name: :ASC}

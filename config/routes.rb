@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get "carts/show"
+  devise_for :users
+
   default_url_options host: "localhost:3000"
   root "books#index"
   get "users/show"
@@ -15,7 +16,9 @@ Rails.application.routes.draw do
 
   resources :users, :authors, :publishers, :books, :categories, :borrows
   resources :borrow_details, only: [:create, :update, :destroy]
-  resource :cart, only: [:show]
+  #resource :cart, only: [:show]
+  resource :cart
+  resources :cart
 
   namespace :admin do
     resources :books
@@ -30,9 +33,11 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :likes
+    resources :comments
   end
 
   resources :users do
     resources :likes
+    resources :comments
   end
 end

@@ -1,6 +1,8 @@
 class AuthorsController < ApplicationController
   before_action :load_author, except: %i(new create index)
 
+  authorize_resource
+
   def new
     @author = Author.new
   end
@@ -9,7 +11,7 @@ class AuthorsController < ApplicationController
     @author = Author.new authors_params
     if @author.save
       flash[:success] = t ".success_message"
-      redirect_to @author
+      redirect_to authors_path
     else
       render :new
     end
@@ -34,14 +36,14 @@ class AuthorsController < ApplicationController
   end
 
   def index
-    @authors = Author.alphabet.search_author(params[:search])
-      .paginate page: params[:page],per_page: Settings.author.per_page
+    @search = Author.ransack (params[:q])
+    @authors = @search.result.alphabet.paginate page: params[:page],per_page: Settings.author.per_page
   end
 
   def update
     if @author.update_attributes authors_params
       flash[:success] = t ".update_success"
-      redirect_to @author
+      redirect_to authors_path
     else
       render :edit
     end
